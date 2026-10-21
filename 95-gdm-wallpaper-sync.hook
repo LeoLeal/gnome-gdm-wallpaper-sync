@@ -1,0 +1,11 @@
+# Managed by gdm-wallpaper-sync/install.sh
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = gnome-shell
+
+[Action]
+Description = Reapplying the GDM last-wallpaper background (without restarting GDM)...
+When = PostTransaction
+Exec = /usr/local/libexec/gdm-wallpaper-sync-theme apply

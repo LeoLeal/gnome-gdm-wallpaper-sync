@@ -1,0 +1,21 @@
+# Managed by gdm-wallpaper-sync/install.sh
+[Unit]
+Description=Save the current desktop wallpaper for the next GDM login
+PartOf=graphical-session.target
+After=graphical-session-pre.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python -I @SCRIPT@
+Restart=on-failure
+RestartSec=5
+Nice=19
+CPUSchedulingPolicy=idle
+IOSchedulingClass=idle
+UMask=0022
+NoNewPrivileges=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=graphical-session.target

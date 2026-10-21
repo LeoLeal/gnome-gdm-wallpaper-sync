@@ -1,0 +1,19 @@
+name: Tests
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    steps:
+      - name: Install test dependencies
+        run: pacman -Syu --noconfirm --needed git python python-gobject glib2-devel gsettings-desktop-schemas dbus
+      - uses: actions/checkout@v4
+      - name: Unit and event tests
+        run: dbus-run-session -- /usr/bin/python -B -m unittest -v test_sync.py
+      - name: Shell syntax
+        run: bash -n install.sh uninstall.sh
