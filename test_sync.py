@@ -108,7 +108,13 @@ def advance():
         background.set_string(key, second.as_uri())
     return GLib.SOURCE_REMOVE
 def finish():
-    if (destination / 'current').read_bytes() != second.read_bytes():
+    try:
+        matches = (destination / 'current').read_bytes() == second.read_bytes()
+    except OSError as error:
+        print(f'Cannot read copied wallpaper: {error}', file=sys.stderr, flush=True)
+        os._exit(2)
+    if not matches:
+        print('The watcher did not copy the changed wallpaper', file=sys.stderr, flush=True)
         os._exit(2)
     os.kill(os.getpid(), signal.SIGTERM)
     return GLib.SOURCE_REMOVE

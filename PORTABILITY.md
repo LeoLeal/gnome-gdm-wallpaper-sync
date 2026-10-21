@@ -25,7 +25,9 @@
    a packaging/code adaptation; they are not automatically discovered.
 3. System executable paths use the Arch-style `/usr/bin/python`, `/usr/bin/gresource`
    and `/usr/bin/glib-compile-resources`. A distro without those paths needs an
-   adapted package. PyGObject/GLibUnix and the desktop schemas must be installed.
+   adapted package. PyGObject/GLibUnix, the desktop schemas and `shared-mime-info`
+   must be installed. Gio uses the shared MIME database to recognize image files;
+   minimal CI containers may not include it even when GLib is installed.
 4. The greeter background is machine-wide and managed by one designated owner.
    Installing for another user is not a supported arbitration mechanism.
 5. Without pacman, theme updates require manual reapplication or an external

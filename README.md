@@ -16,15 +16,15 @@ This project is not affiliated with GNOME.
 
 - Linux, systemd user sessions, GNOME Shell and GDM.
 - System Python with PyGObject, Gio, GLib and GLibUnix introspection data.
-- GNOME desktop GSettings schemas, `gresource`, `glib-compile-resources`, Bash,
-  GNU coreutils and sudo.
+- GNOME desktop GSettings schemas, `shared-mime-info` (for image detection),
+  `gresource`, `glib-compile-resources`, Bash, GNU coreutils and sudo.
 - A regular resource file at `/usr/share/gnome-shell/gnome-shell-theme.gresource`
   containing the `#lockDialogGroup` CSS selector.
 
 On Arch Linux the development/test dependencies can be installed with:
 
 ```bash
-sudo pacman -S --needed python python-gobject glib2-devel gsettings-desktop-schemas dbus
+sudo pacman -S --needed python python-gobject glib2-devel gsettings-desktop-schemas shared-mime-info dbus
 ```
 
 ## Install
